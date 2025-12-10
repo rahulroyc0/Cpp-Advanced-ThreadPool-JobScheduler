@@ -57,10 +57,7 @@ private:
         Task task;
         uint64_t id;     // unique id for cancellation/recurring
         Millis interval; // zero if not recurring, otherwise periodic interval
-
-        // For priority_queue ordering: earlier runAt first; if tie, higher priority first
     };
-    // Comparator used by priority_queue defined in .cpp
     struct Compare
     {
         bool operator()(JobScheduler::ScheduledJob const &a, JobScheduler::ScheduledJob const &b) const
