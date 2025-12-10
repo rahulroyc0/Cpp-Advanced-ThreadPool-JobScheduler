@@ -4,12 +4,17 @@ A high-performance, thread-safe asynchronous task scheduler written in Modern C+
 
 # Key Features
 
-Advanced Type Erasure: Supports scheduling functions with any return type (int, string, void, etc.) while maintaining a uniform task queue. Returns std::future<T> to the caller.
-Priority Scheduling:  Tasks are executed based on a Min-Heap (Time) and Max-Heap (Priority) architecture. High-priority tasks run immediately when their time comes.
-Recurring Jobs:  Built-in support for high-frequency recurring tasks (e.g "Run every 10ms").
-Cancellation Mechanism:  Ability to cancel pending or recurring jobs via unique Job IDs.
-Graceful Shutdown:  Ensures no data loss by allowing running tasks to complete before thread destruction.
-High Throughput: Stress-tested with 15,000+ concurrent task submissions and simultaneous recurring jobs without race conditions or deadlocks.
+**Advanced Type Erasure:** Supports scheduling functions with any return type (int, string, void, etc.) while maintaining a uniform task queue. Returns std::future<T> to the caller.
+
+**Priority Scheduling:**  Tasks are executed based on a Min-Heap (Time) and Max-Heap (Priority) architecture. High-priority tasks run immediately when their time comes.
+
+**Recurring Jobs:**  Built-in support for high-frequency recurring tasks (e.g "Run every 10ms").
+
+**Cancellation Mechanism:**  Ability to cancel pending or recurring jobs via unique Job IDs.
+
+**Graceful Shutdown:**  Ensures no data loss by allowing running tasks to complete before thread destruction.
+
+**High Throughput:** Stress-tested with 15,000+ concurrent task submissions and simultaneous recurring jobs without race conditions or deadlocks.
 
 # Architecture
 
