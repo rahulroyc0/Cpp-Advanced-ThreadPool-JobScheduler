@@ -5,10 +5,15 @@ A high-performance, thread-safe asynchronous task orchestrator written in Modern
 # Key Features
 
 **Advanced Type Erasure:** Supports scheduling functions with any return type (int, std::string, void, etc.) while maintaining a uniform task queue. Returns std::future<T> to the caller.
+
 **Priority Scheduling:** Tasks are executed based on a Min-Heap (Time) and Max-Heap (Priority) architecture. High-priority tasks run immediately when their time comes.
+
 **Recurring Jobs:** Built-in support for high-frequency recurring tasks (e.g. "Run every 10ms").
+
 **Cancellation Mechanism:** Ability to cancel pending or recurring jobs via unique Job IDs.
+
 **Graceful Shutdown:** Ensures no data loss by allowing running tasks to complete before thread destruction.
+
 **High Throughput:** Stress-tested with 15,000+ concurrent task submissions and simultaneous recurring jobs without race conditions or deadlocks.
 
 # Architecture
@@ -25,9 +30,11 @@ The system is divided into two core components:
      Handles time-based synchronization using cv.wait_until to minimize CPU usage while waiting for future tasks.
      Wraps generic std::packaged_task to bridge the gap between user types and the thread pool.
 
-# Compilation -
+ Compilation -
+ 
 g++ -I./includes main.cpp src/ThreadPool.cpp src/JobScheduler.cpp -o main
+
 .\main
 
-# Stress-tested with 15,000+ concurrent task submissions... and it passed
-    <img width="1920" height="1080" alt="Screenshot (121)" src="https://github.com/user-attachments/assets/25bd3edf-6693-4af1-9df0-62e9a168d430" />
+Stress-tested with 15,000+ concurrent task submissions... and it passed
+<img width="1920" height="1080" alt="Screenshot (121)" src="https://github.com/user-attachments/assets/7e285b11-e023-40ef-a6b0-6633fb28057d" />
