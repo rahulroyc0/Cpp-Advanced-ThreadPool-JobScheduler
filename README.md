@@ -4,7 +4,7 @@ A high-performance, thread-safe asynchronous task scheduler written in Modern C+
 
 # Key Features
 
-* **Advanced Type Erasure:** Supports scheduling functions with any return type (`int`, `string`, `void`, etc.) while maintaining a uniform task queue. Returns `std::future<T>` to the caller.
+* **Advanced Type Erasure:** Supports scheduling functions with any return type (int, string, void, etc.) while maintaining a uniform task queue. Returns std::future<T> to the caller.
 * **Priority Scheduling:** Tasks are executed based on a Min-Heap (Time) and Max-Heap (Priority) architecture. High-priority tasks run immediately when their time comes.
 * **Recurring Jobs:** Built-in support for high-frequency recurring tasks (e.g "Run every 10ms").
 * **Cancellation Mechanism:** Ability to cancel pending or recurring jobs via unique Job IDs.
@@ -15,15 +15,15 @@ A high-performance, thread-safe asynchronous task scheduler written in Modern C+
 
 The system is divided into two core components:
 
-1.  **`ThreadPool` (The Muscle):**
-    * Manages a pool of worker threads.
-    * Uses a thread-safe queue protected by `std::mutex` and `std::condition_variable`.
-    * Optimized with "Sink Pattern" for task submission (move semantics).
+1.  ** ThreadPool (The Muscle):**
+     Manages a pool of worker threads.
+     Uses a thread-safe queue protected by std::mutex and std::condition_variable.
+     Optimized with "Sink Pattern" for task submission (move semantics).
 
-2.  **`JobScheduler` (The Brain):**
-    * Manages a `std::priority_queue` of `ScheduledJob` structs.
-    * Handles time-based synchronization using `cv.wait_until` to minimize CPU usage while waiting for future tasks.
-    * Wraps generic `std::packaged_task` inside `void` lambdas to bridge the gap between user types and the thread pool.
+2.  ** JobScheduler (The Brain):**
+    * Manages a std::priority_queue of ScheduledJob structs.
+    * Handles time-based synchronization using cv.wait_until to minimize CPU usage while waiting for future tasks.
+    * Wraps generic std::packaged_task  to bridge the gap between user types and the thread pool.
 # Compilation - 
     g++ -I./includes main.cpp src/ThreadPool.cpp src/JobScheduler.cpp -o main
     .\main
