@@ -50,6 +50,7 @@ public:
     bool cancel(uint64_t jobId);
 
 private:
+    // ScheduleJob struct for grouping the task with its id,interval,runTime etc
     struct ScheduledJob
     {
         TimePoint runAt;  // next time to run
@@ -58,6 +59,7 @@ private:
         uint64_t id;     // unique id for cancellation/recurring
         Millis interval; // zero if not recurring, otherwise periodic interval
     };
+    // Compare struct for priority_queue
     struct Compare
     {
         bool operator()(JobScheduler::ScheduledJob const &a, JobScheduler::ScheduledJob const &b) const
